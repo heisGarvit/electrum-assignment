@@ -1,1 +1,253 @@
-<p>details works!</p>
+<div *ngIf="productQuote" class="w3-padding">
+
+  <div class="w3-row" style="background-color: var(--background-color); width: 80vw">
+
+    <div class="w3-row w3-border-bottom">
+
+      <div class="w3-container w3-cell w3-right w3-cell-bottom w3-padding">
+
+        <button class="w3-button w3-tiny w3-round" (click)="navigated.emit(-1)"
+                style="background-color: var(--cta-color); border-color: var(--cta-color); color: white">
+          <em class="pi pi-chevron-left w3-tiny"></em>
+        </button>
+
+        <button class="w3-button w3-tiny w3-border-right" (click)="navigated.emit(-1)"
+                style="background-color: white;"> Previous </button>
+        <button class="w3-button w3-tiny  w3-center" (click)="navigated.emit(1)"
+                style="background-color: white;; width: 70px"> Next </button>
+
+        <button class="w3-button w3-tiny w3-round" (click)="navigated.emit(1)"
+                style="background-color: var(--cta-color); border-color: var(--cta-color); color: white">
+          <em class="pi pi-chevron-right w3-tiny"></em>
+        </button>
+
+
+      </div>
+      <div class="w3-container w3-red w3-cell w3-cell-bottom w3-margin-bottom ">
+        <br>
+        Heat Pump Electric Water Heater > {{productQuote.name}}
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="w3-row">
+
+      <div class="w3-col l1">
+        /
+      </div>
+
+      <div class="w3-col l10">
+
+        <div class="w3-row">
+
+          <div class="w3-col l5">
+            <div class="w3-card w3-center" style="background-color: white">
+              <img src="assets/images/img1.png"
+                   class="w3-padding-48"
+                   alt="product image" style="height: 480px">
+            </div>
+          </div>
+
+          <div class="w3-col l7">
+            <div class="w3-right w3-center w3-small">
+              <img src="assets/images/Energy_Star_logo.svg.png" alt="Energy Start logo">
+              <br>
+              3.4 of <img src="assets/icons/info-tooltip.svg" alt="info icon">
+            </div>
+            <div class="w3-padding">
+              <h2>
+                <strong>{{productQuote.manufacturer_name}}</strong>
+              </h2>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <br>
+
+
+        <div class="w3-card w3-padding" style="background-color: white">
+
+
+          <p-tabView>
+            <p-tabPanel header="Product Overview">
+              <p class="w3-small">Accelerate Heat Pump...</p>
+
+              <div class="w3-row" style="padding: 0">
+
+                <div class="w3-threequarter  w3-border-right">
+
+                  <div  class="w3-half" style="padding: 8px 16px 8px 0"
+                       *ngFor="let product_bullet_block of productQuote.product_bullet_block">
+                    <div class="w3-row w3-border">
+
+                      <div
+                        style="background-color: var(--dark-green-color); color: white"
+                        class="w3-padding">
+                        <em class="pi pi-check"></em> &nbsp; <strong>{{product_bullet_block.product_bullet}}</strong>
+                      </div>
+
+
+                      <div class="w3-padding w3-small" style=" height: 92px;">
+                        {{product_bullet_block.product_block}}
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <div class="w3-quarter w3-padding">
+                  Base Price..............{{productQuote.base_price}}
+                </div>
+
+
+              </div>
+
+
+            </p-tabPanel>
+            <p-tabPanel header="Product Specs">
+
+              <figure style="margin: 0"> <figcaption>Dimensions</figcaption>
+              <table class="w3-table w3-small w3-bordered w3-border w3-round"  style="table-layout: fixed">
+                <tr style="display: none">
+                  <th scope="row"></th>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+              </table>
+
+              </figure>
+
+              <br>
+
+              <figure style="margin: 0"> <figcaption>Details</figcaption>
+              <table class="w3-table w3-small w3-bordered w3-border w3-round"  style="table-layout: fixed">
+                <tr style="display: none">
+                  <th scope="row"></th>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+              </table>
+
+              </figure>
+
+              <br>
+
+              <figure style="margin: 0"> <figcaption>Warranty / Certifications</figcaption>
+              <table class="w3-table w3-small w3-bordered w3-border w3-round"  style="table-layout: fixed">
+                <tr style="display: none">
+                  <th scope="row"></th>
+                </tr>
+                <tr>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>28</td>
+                  <td style="background-color: var(--background-color)">Product Depth</td>
+                  <td>1</td>
+                </tr>
+              </table>
+
+              </figure>
+
+
+            </p-tabPanel>
+          </p-tabView>
+
+
+        </div>
+
+        <p class="w3-tiny">All values displayed on the page...</p>
+
+
+
+      </div>
+
+      <div class="w3-col l1">
+        &nbsp;
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

@@ -1,1 +1,68 @@
-<p>list works!</p>
+
+<div class="w3-row">
+  <div class="w3-third w3-padding" style="background-color: #fff">
+    <br>
+    <div class="text-green">
+      <strong>Tell Us About Your Project</strong>
+    </div>
+    <br>
+
+    <div class="w3-row w3-border-bottom w3-border-top">
+      <br>
+      Location
+
+      <br>
+
+
+      <br>
+
+      <div class="w3-row w3-border">
+        <div class="w3-twothird">
+          <p-slider style="padding: 35px; width: 80%"
+            [(ngModel)]="volumeSelected"
+                    [min]="30" [max]="80"
+                    [step]="10"></p-slider>
+        </div>
+        <div class="w3-third w3-padding w3-center" style="background-color: var(--background-color); color: var(--cta-color)">
+          <strong>{{volumeSelected}} Gallons</strong>
+          <br> (3-5 people)
+        </div>
+      </div>
+
+      <button class="w3-button w3-round w3-border" style="background-color: var(--cta-color); border-color: var(--cta-color)!important; color: white">No</button>
+      <button class="w3-button w3-round w3-border">Yes</button>
+
+      <br>
+      <br>
+
+    </div>
+
+
+  </div>
+
+  <div class="w3-twothird" style="background-color: var(--background-color)">
+
+    <div class="w3-row w3-center" style="background-color: var(--dark-green-color); color: white">
+      Your project qualifies for <strong>incentives!</strong>
+    </div>
+
+    <div class="w3-row w3-padding" style="color: var(--dark-green-color)">
+      <div class="w3-row  w3-border-bottom w3-padding-16">
+        <strong>Your Hybrid Electric Water Heater Recommended Options</strong>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+  <p>list works!</p>
+
+  <p-dialog [(visible)]="selectedProductQuote"
+            style="width: 90vw"
+            [modal]="true"  [maximizable]="true"
+            [showHeader]="false">
+    <app-details [productQuote]="selectedProductQuote"></app-details>
+  </p-dialog>

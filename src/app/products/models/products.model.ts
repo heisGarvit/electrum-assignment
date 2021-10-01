@@ -1,8 +1,15 @@
-export interface Quotes {
-  quotes:                   ProductQuotes;
+export interface ProductsQuotesApi {
+  data: {
+    quotes: {
+      product_quotes:       ProductQuotes[];
+    }
+  }
+  success:                  boolean;
+  message:                  string;
+  status:                   number;
 }
 
-interface ProductQuotes {
+export interface ProductQuotes {
   "model_id":               number;
   "name":                   string;
   "manufacturer_name":      string;
