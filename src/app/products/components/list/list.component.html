@@ -64,5 +64,9 @@
             style="width: 90vw"
             [modal]="true"  [maximizable]="true"
             [showHeader]="false">
-    <app-details [productQuote]="selectedProductQuote"></app-details>
+    <app-details
+      [productQuote]="selectedProductQuote"
+      (navigated)="navigatedOnPopUp($event)"
+      (closed)="selectedProductID=undefined; selectedProductQuote= undefined; selectedProductQuoteIndex = undefined"
+    ></app-details>
   </p-dialog>

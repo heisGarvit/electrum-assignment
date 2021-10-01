@@ -10,6 +10,7 @@ export class DetailsComponent implements OnInit {
 
   @Input() productQuote: ProductQuotes | undefined;
   @Output() navigated = new EventEmitter<number>();
+  @Output() closed = new EventEmitter<boolean>();
 
   constructor() { }
 

@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
 
   productQuotes: ProductQuotes[] | undefined;
   selectedProductID: string | undefined;
+  selectedProductQuoteIndex: number | undefined;
   selectedProductQuote: ProductQuotes | undefined;
 
   volumeSelected = 50;
@@ -32,8 +33,9 @@ export class ListComponent implements OnInit {
     this.productQuotes = await this.products.getProductQuotes();
 
     if (this.selectedProductID) {
-      this.productQuotes?.forEach(quote => {
+      this.productQuotes?.forEach((quote, index) => {
         if ('' + quote.model_id === this.selectedProductID) {
+          this.selectedProductQuoteIndex = index;
           this.selectedProductQuote = quote;
           console.log(this.selectedProductQuote);
           return;
@@ -44,6 +46,18 @@ export class ListComponent implements OnInit {
   }
 
 
+  navigatedOnPopUp(index: number) {
 
+    if ( this.selectedProductQuoteIndex != undefined && this.productQuotes != undefined) {
+      this.selectedProductQuoteIndex += index;
+      if (this.selectedProductQuoteIndex >= this.productQuotes.length) {
+        this.selectedProductQuoteIndex = 0
+      } else if (this.selectedProductQuoteIndex < 0) {
+        this.selectedProductQuoteIndex = this.productQuotes.length - 1;
+      }
+      this.selectedProductQuote = this.productQuotes[this.selectedProductQuoteIndex];
+    }
+
+  }
 
 }

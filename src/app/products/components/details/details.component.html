@@ -25,7 +25,7 @@
       </div>
       <div class="w3-container w3-red w3-cell w3-cell-bottom w3-margin-bottom ">
         <br>
-        Heat Pump Electric Water Heater > {{productQuote.name}}
+        Heat Pump Electric Water Heater > <strong>{{productQuote.name}}</strong>
       </div>
 
     </div>
@@ -60,6 +60,8 @@
               <h2>
                 <strong>{{productQuote.manufacturer_name}}</strong>
               </h2>
+
+              <span (click)="closed.emit(true)" style="color: var(--primary-color); cursor: pointer">Back to Results</span>
 
             </div>
 
