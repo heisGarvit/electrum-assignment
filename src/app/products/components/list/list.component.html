@@ -1,9 +1,8 @@
-
 <div class="w3-row">
   <div class="w3-third w3-padding" style="background-color: #fff">
     <br>
     <div class="text-green">
-      <strong>Tell Us About Your Project</strong>
+      <h4><strong>Tell Us About Your Project</strong></h4>
     </div>
     <br>
 
@@ -12,24 +11,28 @@
       Location
 
       <br>
-
-
       <br>
+
+      Size your water heater&nbsp;
+      <img src="assets/icons/info-tooltip.svg" alt="info icon">
 
       <div class="w3-row w3-border">
         <div class="w3-twothird">
           <p-slider style="padding: 35px; width: 80%"
-            [(ngModel)]="volumeSelected"
+                    [(ngModel)]="volumeSelected"
                     [min]="30" [max]="80"
                     [step]="10"></p-slider>
         </div>
-        <div class="w3-third w3-padding w3-center" style="background-color: var(--background-color); color: var(--cta-color)">
+        <div class="w3-third w3-padding w3-center"
+             style="background-color: var(--background-color); color: var(--cta-color)">
           <strong>{{volumeSelected}} Gallons</strong>
           <br> (3-5 people)
         </div>
       </div>
 
-      <button class="w3-button w3-round w3-border" style="background-color: var(--cta-color); border-color: var(--cta-color)!important; color: white">No</button>
+      <button class="w3-button w3-round w3-border"
+              style="background-color: var(--cta-color); border-color: var(--cta-color)!important; color: white">No
+      </button>
       <button class="w3-button w3-round w3-border">Yes</button>
 
       <br>
@@ -52,21 +55,140 @@
       </div>
     </div>
 
+
+    <div class="w3-row w3-padding">
+      <ng-container *ngFor="let productQuote of productQuotes; let i = index">
+
+
+        <div class="w3-third w3-padding"
+             *ngIf="volumeSelected < (productQuote.volume + 10) && volumeSelected >= productQuote.volume">
+
+          <div class="w3-card w3-round" style="overflow: hidden">
+            <div class="w3-padding" style="background-color: black; color: white">
+
+              <h4>
+                <strong>
+                  {{productQuote.manufacturer_name}}
+                  <br>
+                  {{productQuote.volume}}
+
+                </strong>
+              </h4>
+
+
+            </div>
+            <div class="w3-padding" style="background-color: white">
+
+              <div class="w3-row w3-border-bottom w3-padding">
+
+
+                <div class="w3-third w3-center">
+                  <img src="assets/images/img2.png" alt="product pic">
+                </div>
+                <div class="w3-twothird">
+
+                  <ul style="list-style-type: circle;">
+                    <li *ngFor="let feature of productQuote.est_highlight">{{ feature }}</li>
+                  </ul>
+
+                </div>
+
+
+              </div>
+
+              <div class="w3-padding">
+
+              </div>
+
+              Base Price ........... $ {{productQuote.base_price}}
+
+            </div>
+
+            <div class="w3-padding w3-center"
+                 (click)="selectedProductQuoteIndex = i; selectedProductQuote = productQuote"
+                 style="background-color: #EEEEEE; color: var(--primary-color); cursor: pointer">
+
+              <strong>View More Details</strong>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </ng-container>
+
+
+    </div>
+
+
+    <div class="w3-row w3-padding">
+      <p>The Heat Pump Water Heater Advantage</p>
+
+      <div class="w3-row  w3-border-bottom" style="padding-bottom: 30px">
+        <div class="w3-third">
+          <h4 style="color: var(--dark-green-color)">
+            <strong>Clean & Healthy Air</strong> &nbsp;
+            <img src="assets/icons/info-tooltip.svg" alt="info icon">
+          </h4>
+          No in-home air pollution or <br>
+          greenhouse gas emissions
+        </div>
+        <div class="w3-third">
+          <h4 style="color: var(--dark-green-color)">
+            <strong>Reduced Carbon Footprint</strong> &nbsp;
+            <img src="assets/icons/info-tooltip.svg" alt="info icon">
+          </h4>
+          No in-home air pollution or <br>
+          greenhouse gas emissions
+        </div>
+        <div class="w3-third">
+          <h4 style="color: var(--dark-green-color)">
+            <strong>Lower Energy Bills</strong> &nbsp;
+            <img src="assets/icons/info-tooltip.svg" alt="info icon">
+          </h4>
+          Upto 75% reduction in energy <br>
+          use
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w3-padding">
+      <h3>How Hybrid Electric Water Heater Work</h3>
+
+      <div class="w3-card w3-padding" style="background-color: white">
+        <p-tabView>
+          <p-tabPanel header="Process">
+            A Hybrid electric water ...
+
+            <img src="assets/images/hpwh-process-tab.png" style="width: 100%" alt="process image">
+          </p-tabPanel>
+          <p-tabPanel header="Components">
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+
+    </div>
+
+    <div class="w3-padding">
+      All values displayed on this page...
+    </div>
+
   </div>
 
 </div>
 
 
-
-  <p>list works!</p>
-
-  <p-dialog [(visible)]="selectedProductQuote"
-            style="width: 90vw"
-            [modal]="true"  [maximizable]="true"
-            [showHeader]="false">
-    <app-details
-      [productQuote]="selectedProductQuote"
-      (navigated)="navigatedOnPopUp($event)"
-      (closed)="selectedProductID=undefined; selectedProductQuote= undefined; selectedProductQuoteIndex = undefined"
-    ></app-details>
-  </p-dialog>
+<p-dialog [(visible)]="selectedProductQuote"
+          style="width: 90vw"
+          [dismissableMask]="true"
+          [modal]="true" [maximizable]="true"
+          [showHeader]="false">
+  <app-details
+    [productQuote]="selectedProductQuote"
+    (navigated)="navigatedOnPopUp($event)"
+    (closed)="selectedProductID=undefined; selectedProductQuote= undefined; selectedProductQuoteIndex = undefined"
+  ></app-details>
+</p-dialog>
