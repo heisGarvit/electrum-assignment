@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ProductQuotes} from "../../models/products.model";
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: []
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent {
 
   @Input() productQuote: ProductQuotes | undefined;
   @Output() navigated = new EventEmitter<number>();
@@ -19,10 +19,4 @@ export class DetailsComponent implements OnInit {
     'assets/images/img1.png',
   ];
   selectedImageIndex = 1;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

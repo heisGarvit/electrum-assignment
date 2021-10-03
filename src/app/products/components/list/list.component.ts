@@ -6,7 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: []
 })
 export class ListComponent implements OnInit {
 
@@ -41,8 +41,6 @@ export class ListComponent implements OnInit {
         if ('' + quote.model_id === this.selectedProductID) {
           this.selectedProductQuoteIndex = index;
           this.selectedProductQuote = quote;
-          console.log(this.selectedProductQuote);
-          return;
         }
       });
     }
