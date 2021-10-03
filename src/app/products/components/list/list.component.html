@@ -1,14 +1,25 @@
 <div class="w3-row">
-  <div class="w3-third w3-padding" style="background-color: #fff">
+  <div class="w3-third w3-padding" style="background-color: #fff; color: var(--text-color)">
+    <strong> <span style="color: blue">Home</span> > Hybrid Electric Water Heater</strong>
+
+    <br>
     <br>
     <div class="text-green">
       <h4><strong>Tell Us About Your Project</strong></h4>
     </div>
-    <br>
 
-    <div class="w3-row w3-border-bottom w3-border-top">
+    <div class="w3-row w3-border-bottom w3-border-top" style="color: var(--text-color)">
       <br>
       Location
+      <br>
+
+      <input type="text" pInputText style="width: 64%" />
+
+      <p-dropdown [options]="[{name: 'Single-Family', code: 'single-family'}]"
+                  [(ngModel)]="selectedFamily" optionLabel="name" optionValue="code"></p-dropdown>
+
+      &nbsp;
+      <p-button label="" icon="pi pi-search" style="background-color: var(--secondary-color); height: 54px"></p-button>
 
       <br>
       <br>
@@ -24,18 +35,35 @@
                     [step]="10"></p-slider>
         </div>
         <div class="w3-third w3-padding w3-center"
-             style="background-color: var(--background-color); color: var(--cta-color)">
+             style="background-color: var(--background-color); color: var(--secondary-color)">
           <strong>{{volumeSelected}} Gallons</strong>
           <br> (3-5 people)
         </div>
       </div>
 
-      <button class="w3-button w3-round w3-border"
-              style="background-color: var(--cta-color); border-color: var(--cta-color)!important; color: white">No
-      </button>
-      <button class="w3-button w3-round w3-border">Yes</button>
+      <br>
+
+
+      What is your current fuel type?
+      <br>
+
+      <p-dropdown [options]="[{name: 'Natural Gas', code: 'natural-gas'}]"
+                  [(ngModel)]="selectedFuel" optionLabel="name" optionValue="code"></p-dropdown>
+
 
       <br>
+      <br>
+      <br>
+
+
+      <p-selectButton [options]="waterHeaterEmergencyOptions" style="width: 250px"
+                      [(ngModel)]="waterHeaterEmergency" optionLabel="label" optionValue="value"></p-selectButton>
+
+      <p *ngIf="waterHeaterEmergency" style="color: #4CAF50">
+        <strong>Got it! We will submit to our partner you need for <br> immediate help.</strong>
+      </p>
+
+
       <br>
 
     </div>
@@ -45,13 +73,14 @@
 
   <div class="w3-twothird" style="background-color: var(--background-color)">
 
-    <div class="w3-row w3-center" style="background-color: var(--dark-green-color); color: white">
+    <div class="w3-row w3-center w3-padding" style="background-color: var(--secondary-color); color: white">
+      <img src="assets/icons/Searching%20applicable%20rebates%20and%20incentives.svg" alt="tag">
       Your project qualifies for <strong>incentives!</strong>
     </div>
 
-    <div class="w3-row w3-padding" style="color: var(--dark-green-color)">
+    <div class="w3-row w3-padding" style="color: var(--primary-color)">
       <div class="w3-row  w3-border-bottom w3-padding-16">
-        <strong>Your Hybrid Electric Water Heater Recommended Options</strong>
+        <h3><strong>Your Hybrid Electric Water Heater Recommended Options</strong></h3>
       </div>
     </div>
 
@@ -63,17 +92,28 @@
         <div class="w3-third w3-padding"
              *ngIf="volumeSelected < (productQuote.volume + 10) && volumeSelected >= productQuote.volume">
 
-          <div class="w3-card w3-round" style="overflow: hidden">
-            <div class="w3-padding" style="background-color: black; color: white">
+          <div class="w3-card w3-round-large" style="overflow: hidden">
+            <div class="w3-cell-row" style="background-color: black; color: white">
 
-              <h4>
-                <strong>
-                  {{productQuote.manufacturer_name}}
-                  <br>
-                  {{productQuote.volume}}
+
+              <div class="w3-container w3-cell">
+                <h5 style="margin-bottom: -6px">
+                  <strong>
+                    {{productQuote.manufacturer_name}}
+                  </strong>
+                </h5>
+                <strong >
+                  <span style="margin-top: -10px" class="">{{productQuote.name}}</span>
 
                 </strong>
-              </h4>
+              </div>
+
+              <div class="w3-container w3-right-align w3-cell w3-cell-middle">
+                3.4 ef&nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon"> &nbsp;
+                <img class="w3-round" style="height: 30px" src="assets/images/Energy_Star_logo.svg.png" alt="energy rating">
+              </div>
+
+
 
 
             </div>
@@ -87,7 +127,7 @@
                 </div>
                 <div class="w3-twothird">
 
-                  <ul style="list-style-type: circle;">
+                  <ul class="disc" style="list-style-type: none;">
                     <li *ngFor="let feature of productQuote.est_highlight">{{ feature }}</li>
                   </ul>
 
@@ -96,11 +136,40 @@
 
               </div>
 
-              <div class="w3-padding">
+              <div class="" style="font-weight: bolder;">
+
+                Base Price - - - - - - - - - - - - - - - - - - - - <span class="w3-right"> $ {{productQuote.base_price}}</span>
+                <div class="w3-opacity ">
+                  <span class="w3-small">(Installation not included)</span>
+
+                  <br>
+                   &nbsp; &nbsp; Federal Tax Credit &nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon">  - - -  - - - -  - - <span class="w3-right"> - $ 300</span>
+                  <br>
+                   &nbsp; &nbsp; Utility Incentives &nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon">  - - - - - - - - - <span class="w3-right"> - $ 1000</span>
+
+
+                </div>
+
+
+                Equipment Cost &nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon"> - - - - - - - - - - - - - <span class="w3-right w3-large" style="color: var(--secondary-color)"> $ {{productQuote.base_price}}</span>
+
+                <br>
+                <br>
+
+                <div class="w3-center">
+
+                  <div class="w3-round w3-border w3-padding" style="border-color: green !important; width: 84%; margin: auto">
+                    Your Est. Annual Savings is <span style="color: green"> $ 120&nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon"> </span>
+                  </div>
+
+                  <div class="w3-padding w3-center">
+                    <button class="w3-button w3-round" style="background-color: var(--secondary-color); color: white">Get Install Quote</button>
+                  </div>
+
+                </div>
 
               </div>
 
-              Base Price ........... $ {{productQuote.base_price}}
 
             </div>
 
@@ -119,34 +188,36 @@
 
       </ng-container>
 
+    </div>
+    <div class="w3-row w3-padding">
+      <button pButton type="button" label="See More Options" class="p-button-outlined"></button>
 
     </div>
 
 
     <div class="w3-row w3-padding">
-      <p>The Heat Pump Water Heater Advantage</p>
+      <h4 style="color: var(--text-color)">
+        <strong>The Heat Pump Water Heater Advantage</strong>
+      </h4>
 
       <div class="w3-row  w3-border-bottom" style="padding-bottom: 30px">
         <div class="w3-third">
-          <h4 style="color: var(--dark-green-color)">
-            <strong>Clean & Healthy Air</strong> &nbsp;
-            <img src="assets/icons/info-tooltip.svg" alt="info icon">
+          <h4 style="color: var(--primary-color)">
+            <strong>Clean & Healthy Air</strong>&nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon">
           </h4>
           No in-home air pollution or <br>
           greenhouse gas emissions
         </div>
         <div class="w3-third">
-          <h4 style="color: var(--dark-green-color)">
-            <strong>Reduced Carbon Footprint</strong> &nbsp;
-            <img src="assets/icons/info-tooltip.svg" alt="info icon">
+          <h4 style="color: var(--primary-color)">
+            <strong>Reduced Carbon Footprint</strong>&nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon">
           </h4>
-          No in-home air pollution or <br>
-          greenhouse gas emissions
+          Carbon offset equal to your <br>
+          home equals <strong style="color: var(--secondary-color)">23 trees planted</strong>
         </div>
         <div class="w3-third">
-          <h4 style="color: var(--dark-green-color)">
-            <strong>Lower Energy Bills</strong> &nbsp;
-            <img src="assets/icons/info-tooltip.svg" alt="info icon">
+          <h4 style="color: var(--primary-color)">
+            <strong>Lower Energy Bills</strong>&nbsp;<img src="assets/icons/info-tooltip.svg" alt="info icon">
           </h4>
           Upto 75% reduction in energy <br>
           use
@@ -156,12 +227,14 @@
     </div>
 
     <div class="w3-padding">
-      <h3>How Hybrid Electric Water Heater Work</h3>
+      <h4 style="color: var(--text-color)">
+        <strong>How Hybrid Electric Water Heater Work</strong>
+      </h4>
 
       <div class="w3-card w3-padding" style="background-color: white">
         <p-tabView>
           <p-tabPanel header="Process">
-            A Hybrid electric water ...
+            Accelera heat pump water heaters save up to 80% of hot water costs because they extract heat to make hot water from energy in the air. The heat pump draws less energy than a toaster while it is running and making hot water. In warm climates, Accelera can be placed in a garage, where it uses the heat from the outside air; or inside the house, where it helps with air conditioning.
 
             <img src="assets/images/hpwh-process-tab.png" style="width: 100%" alt="process image">
           </p-tabPanel>
@@ -172,8 +245,11 @@
 
     </div>
 
-    <div class="w3-padding">
-      All values displayed on this page...
+    <div class="w3-padding w3-small w3-opacity">
+      All values displayed on this page are based on standard industry assumptions. Savings numbers are calculated based on present day market circumstances, but may vary due to utility adjustments to rates or policy, or due to updates to the system design. Finance payments displayed are estimates subject to credit approval and based upon current provider rates that are subject to change. Your payments and rates may be higher.
+
+      <br>
+      <br>
     </div>
 
   </div>
@@ -189,6 +265,6 @@
   <app-details
     [productQuote]="selectedProductQuote"
     (navigated)="navigatedOnPopUp($event)"
-    (closed)="selectedProductID=undefined; selectedProductQuote= undefined; selectedProductQuoteIndex = undefined"
+    (closed)="popUpClosed()"
   ></app-details>
 </p-dialog>

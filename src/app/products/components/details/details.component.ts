@@ -12,6 +12,14 @@ export class DetailsComponent implements OnInit {
   @Output() navigated = new EventEmitter<number>();
   @Output() closed = new EventEmitter<boolean>();
 
+  images = [
+    'assets/images/img1.png',
+    'assets/images/img1.png',
+    'assets/images/img1.png',
+    'assets/images/img1.png',
+  ];
+  selectedImageIndex = 1;
+
   constructor() { }
 
   ngOnInit(): void {

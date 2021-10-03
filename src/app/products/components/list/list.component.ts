@@ -16,6 +16,10 @@ export class ListComponent implements OnInit {
   selectedProductQuote: ProductQuotes | undefined;
 
   volumeSelected = 50;
+  waterHeaterEmergencyOptions = [{label: 'No', value: false}, {label: 'Yes', value: true}];
+  waterHeaterEmergency = true;
+  selectedFamily = 'single-family';
+  selectedFuel = 'natural-gas';
 
   constructor(
     private products: ProductsService,
@@ -60,4 +64,9 @@ export class ListComponent implements OnInit {
 
   }
 
+  popUpClosed() {
+    this.selectedProductID=undefined;
+    this.selectedProductQuote= undefined;
+    this.selectedProductQuoteIndex = undefined
+  }
 }

@@ -10,6 +10,10 @@ import {ButtonModule} from "primeng/button";
 import {SliderModule} from "primeng/slider";
 import {FormsModule} from "@angular/forms";
 import {TabViewModule} from "primeng/tabview";
+import {SelectButtonModule} from "primeng/selectbutton";
+import {DropdownModule} from "primeng/dropdown";
+import {InputTextModule} from "primeng/inputtext";
+import {BreadcrumbModule} from "primeng/breadcrumb";
 
 
 @NgModule({
@@ -18,14 +22,18 @@ import {TabViewModule} from "primeng/tabview";
     ListComponent,
     DetailsComponent
   ],
-    imports: [
-        CommonModule,
-        ProductsRoutingModule,
-        DialogModule,
-        ButtonModule,
-        SliderModule,
-        FormsModule,
-        TabViewModule
-    ]
+  imports: [
+    CommonModule,
+    ProductsRoutingModule,
+    DialogModule,
+    ButtonModule,
+    SliderModule,
+    FormsModule,
+    TabViewModule,
+    SelectButtonModule,
+    DropdownModule,
+    InputTextModule,
+    BreadcrumbModule
+  ]
 })
 export class ProductsModule { }
